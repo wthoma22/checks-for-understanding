@@ -5,6 +5,9 @@ Fork this respository. Answer the questions to the best of your ability. Try to 
 Note: When you're done, submit a PR.
 
 1. At a high level, what is ActiveRecord? What does it do/allow you to do?
+  Active Record is a Ruby library for working with Relational SQL databases.
+  It uses Object Relational Mapping for multiple purposes including easy construction of SQL queries in Ruby.
+
 2. Assume you have the following model:
 
 ```ruby
@@ -14,7 +17,14 @@ end
 
 What are some methods you can call on `Team`? If these methods aren't defined in the class, how do you have access to them?
 
+  Team.create()
+  Team.where()
+  Team.joins()
+  Team.find()
+
 3. Assume that in your database, a team has the following attributes: "id", "name", owner_id". How would you find the name of a team with an id of 4? Assuming your class only included the code from question 2, how could you find the owner of the same team?
+
+  Team.find(4)
 
 4. Assume that you added a line to your `Team` class as follows:
 
@@ -26,11 +36,31 @@ end
 
 Now how would you find the owner of the team with an id of 4?
 
+  Team.joins(:owners).where(owner.id => 4)
+
 5. In a database that's holding students and teachers, what will be the relationship between students and teachers? Draw the schema diagram.
+
+  Students has_many teachers and teachers has_many students.
+  There would be a join table with student_id and teacher_id connected to id's on each table.
+
 6. Define foreign key, primary key, and schema.
+
+  Foreign key - Creates a relationship between two tables.
+  Primary key - Allows each row in a table to be uniquely identified.
+  Schema - Representation of a plan in a model form.
+
 7. Describe the relationship between a foreign key on one table and a primary key on another table.
+
+  Primary key would be a name row for example.
+  A foreign key would be a user_id connecting a user to an additional table.
+
 8. What are the parts of an HTTP response?
 
+  Post create
+  Get read
+  Put update
+  Patch update
+  Delete destroy
 
 ### Optional Questions
 
